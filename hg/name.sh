@@ -18,10 +18,10 @@ spec:
   hostPath: /data/rocketmq/nameserver
   resources:
     requests:
-      cpu: 2000m
+      cpu: 1
       memory: 1Gi
     limits:
-      cpu: 2000m
+      cpu: 1
       memory: 1Gi
   # volumeClaimTemplates defines the storageClass
   volumeClaimTemplates:

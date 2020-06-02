@@ -8,11 +8,11 @@ metadata:
   name: broker
 spec:
   # size is the number of the broker cluster, each broker cluster contains a master broker and [replicaPerGroup] replica brokers.
-  size: 2
+  size: 1
   # nameServers is the [ip:port] list of name service
   nameServers: 10.0.32.9:9876
   # replicationMode is the broker replica sync mode, can be ASYNC or SYNC
-  replicationMode: ASYNC
+  replicationMode: SYNC
   # replicaPerGroup is the number of each broker cluster
   replicaPerGroup: 1
   # brokerImage is the customized docker image repo of the RocketMQ broker
@@ -28,10 +28,10 @@ spec:
   resources:
     requests:
       cpu: 1
-      memory: 1Gi
+      memory: 1000Mi
     limits:
       cpu: 1
-      memory: 1Gi
+      memory: 1000Mi
   # scalePodName is broker-[broker group number]-master-0
   scalePodName: broker-0-master-0
   # volumeClaimTemplates defines the storageClass

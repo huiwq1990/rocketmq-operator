@@ -382,6 +382,8 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 		cpu = 2
 	}
 
+	log.Info("mem:"+  strconv.FormatInt(mem,10) +", cpu: " +  strconv.FormatInt(cpu,10))
+
 	dep := &appsv1.StatefulSet{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      statefulSetName,
