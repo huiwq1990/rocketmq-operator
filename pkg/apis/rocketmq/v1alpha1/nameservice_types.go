@@ -43,6 +43,8 @@ type NameServiceSpec struct {
 	HostPath string `json:"hostPath"`
 	// VolumeClaimTemplates defines the StorageClass
 	VolumeClaimTemplates []corev1.PersistentVolumeClaim `json:"volumeClaimTemplates"`
+
+	PodSpec corev1.PodSpec `json:"podSpec"`
 }
 
 // NameServiceStatus defines the observed state of NameService
