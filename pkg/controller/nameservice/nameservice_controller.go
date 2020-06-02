@@ -305,6 +305,8 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 				Spec: corev1.PodSpec{
 					HostNetwork: true,
 					DNSPolicy:   "ClusterFirstWithHostNet",
+					Tolerations : nameService.Spec.PodSpec.Tolerations,
+					NodeSelector: nameService.Spec.PodSpec.NodeSelector,
 					Containers: []corev1.Container{{
 						Image: nameService.Spec.NameServiceImage,
 						// Name must be lower case !
@@ -314,6 +316,7 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 							ContainerPort: cons.NameServiceMainContainerPort,
 							Name:          cons.NameServiceMainContainerPortName,
 						}},
+						Resources: nameService.Spec.Resources,
 						VolumeMounts: []corev1.VolumeMount{{
 							MountPath: cons.LogMountPath,
 							Name:      nameService.Spec.VolumeClaimTemplates[0].Name,

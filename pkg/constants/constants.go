@@ -58,6 +58,9 @@ const (
 	// EnvBrokerName is the container environment variable name of broker name
 	EnvBrokerName = "BROKER_NAME"
 
+	EnvCpu = "CPU_LIMIT"
+	EnvMem = "MEM_LIMIT"
+
 	// LogMountPath is the directory of RocketMQ log files
 	LogMountPath = "/home/rocketmq/logs"
 

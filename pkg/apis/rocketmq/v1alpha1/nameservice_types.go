@@ -45,6 +45,8 @@ type NameServiceSpec struct {
 	VolumeClaimTemplates []corev1.PersistentVolumeClaim `json:"volumeClaimTemplates"`
 
 	PodSpec corev1.PodSpec `json:"podSpec"`
+	Resources corev1.ResourceRequirements `json:"resources"`
+
 }
 
 // NameServiceStatus defines the observed state of NameService

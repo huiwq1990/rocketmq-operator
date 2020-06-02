@@ -391,6 +391,8 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 					Labels: ls,
 				},
 				Spec: corev1.PodSpec{
+					Tolerations : broker.Spec.PodSpec.Tolerations,
+					NodeSelector: broker.Spec.PodSpec.NodeSelector,
 					Containers: []corev1.Container{{
 						Image: broker.Spec.BrokerImage,
 						Name:  cons.BrokerContainerName,
@@ -401,6 +403,7 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 								},
 							},
 						},
+						Resources: broker.Spec.Resources,
 						ImagePullPolicy: broker.Spec.ImagePullPolicy,
 						Env: []corev1.EnvVar{{
 							Name:  cons.EnvNameServiceAddress,
@@ -417,7 +420,15 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 						}, {
 							Name:  cons.EnvBrokerName,
 							Value: broker.Name + "-" + strconv.Itoa(brokerGroupIndex),
-						}},
+						}, {
+							Name:  cons.EnvMem,
+							Value: strconv.Itoa(broker.Spec.Resources.Limits.Memory().Size()),
+						}, {
+							Name:  cons.EnvCpu,
+							Value: strconv.Itoa(broker.Spec.Resources.Limits.Cpu().Size()),
+						},
+
+						},
 						Ports: []corev1.ContainerPort{{
 							ContainerPort: cons.BrokerVipContainerPort,
 							Name:          cons.BrokerVipContainerPortName,

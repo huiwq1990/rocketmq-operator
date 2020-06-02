@@ -79,6 +79,17 @@ calculate_heap_sizes()
         ;;
     esac
 
+    if [[ -z "${MEM_LIMIT}" ]]; then
+      echo 'env MEM_LIMIT not exist'
+    else
+        system_memory_in_mb=${MEM_LIMIT}
+    fi
+    if [[ -z "${CPU_LIMIT}" ]]; then
+      echo 'env CPU_LIMIT not exist'
+    else
+      system_cpu_cores=${CPU_LIMIT}
+    fi
+
     # some systems like the raspberry pi don't report cores, use at least 1
     if [ "$system_cpu_cores" -lt "1" ]
     then
