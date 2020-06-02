@@ -290,7 +290,7 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 	ls := labelsForNameService(nameService.Name)
 
 	mem,ok := nameService.Spec.Resources.Limits.Memory().AsInt64()
-	mem = mem /1024
+	mem = mem /(1024 * 1024)
 	if ! ok {
 		mem = 4000
 	}
