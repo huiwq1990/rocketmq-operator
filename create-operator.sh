@@ -27,7 +27,7 @@ export GO111MODULE=on
 
 # Download rocketmq.zip for the Admin Tool if it does not exist
 if [ ! -e build/rocketmq.zip ]; then
-  curl https://dist.apache.org/repos/dist/release/rocketmq/${ROCKETMQ_VERSION}/rocketmq-all-${ROCKETMQ_VERSION}-bin-release.zip -o rocketmq.zip
+  curl https://archive.apache.org/dist/rocketmq/4.5.0/rocketmq-all-4.5.0-bin-release.zip     -o rocketmq.zip
   mv rocketmq.zip build
 fi
 
