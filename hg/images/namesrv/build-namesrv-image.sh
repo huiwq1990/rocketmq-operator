@@ -40,7 +40,3 @@ checkVersion $ROCKETMQ_VERSION
 ROCKETMQ_VERSION=4.5.0
 docker build -t huiwq1990/rocketmq-namesrv:${ROCKETMQ_VERSION}-alpine --build-arg version=${ROCKETMQ_VERSION}  --build-arg user=root  --build-arg group=root  --build-arg uid=0  --build-arg gid=0 .
 docker push huiwq1990/rocketmq-namesrv:4.5.0-alpine
-
-docker build -t ${DOCKERHUB_REPO}:${ROCKETMQ_VERSION}-alpine --build-arg version=${ROCKETMQ_VERSION} .
-
-docker push ${DOCKERHUB_REPO}:${ROCKETMQ_VERSION}-alpine
