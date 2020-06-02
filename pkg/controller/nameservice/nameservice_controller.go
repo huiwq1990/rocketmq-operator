@@ -288,6 +288,20 @@ func labelsForNameService(name string) map[string]string {
 
 func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1alpha1.NameService) *appsv1.StatefulSet {
 	ls := labelsForNameService(nameService.Name)
+
+	mem,ok := nameService.Spec.Resources.Limits.Memory().AsInt64()
+	mem = mem /1024
+	if ! ok {
+		mem = 4000
+	}
+	cpu,ok := nameService.Spec.Resources.Limits.Cpu().AsInt64()
+	if !ok {
+		cpu = 2
+	}
+
+	log.Info("mem:"+  strconv.FormatInt(mem,10) +", cpu: " +  strconv.FormatInt(cpu,10))
+
+
 	dep := &appsv1.StatefulSet{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      nameService.Name,
@@ -322,6 +336,14 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 							Name:      nameService.Spec.VolumeClaimTemplates[0].Name,
 							SubPath:   cons.LogSubPathName,
 						}},
+						Env: []corev1.EnvVar{{
+							Name:  cons.EnvMem,
+							Value: strconv.FormatInt(mem,10),
+						}, {
+							Name:  cons.EnvCpu,
+							Value: strconv.FormatInt(cpu,10),
+						},
+						},
 					}},
 					Volumes: getVolumes(nameService),
 				},
