@@ -374,6 +374,7 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 	}
 
 	mem,ok := broker.Spec.Resources.Limits.Memory().AsInt64()
+	mem = mem /(1024 * 1024)
 	if ! ok {
 		mem = 4000
 	}

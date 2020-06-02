@@ -28,10 +28,10 @@ spec:
   resources:
     requests:
       cpu: 1
-      memory: 1000Mi
+      memory: 1Ki
     limits:
       cpu: 1
-      memory: 1000Mi
+      memory: 1Ki
   # scalePodName is broker-[broker group number]-master-0
   scalePodName: broker-0-master-0
   # volumeClaimTemplates defines the storageClass
