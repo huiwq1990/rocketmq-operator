@@ -1,5 +1,5 @@
 
-cat<<EOF | kubectl apply  -n rocketmq -f -
+cat<<EOF | kubectl apply  -f -
 
 apiVersion: rocketmq.apache.org/v1alpha1
 kind: NameService
@@ -16,6 +16,13 @@ spec:
   storageMode: NFS
   # hostPath is the local path to store data
   hostPath: /data/rocketmq/nameserver
+  resources:
+    requests:
+      cpu: 2000m
+      memory: 1Gi
+    limits:
+      cpu: 2000m
+      memory: 1Gi
   # volumeClaimTemplates defines the storageClass
   volumeClaimTemplates:
     - metadata:

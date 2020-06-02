@@ -373,6 +373,15 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 		statefulSetName = broker.Name + "-" + strconv.Itoa(brokerGroupIndex) + "-replica-" + strconv.Itoa(replicaIndex)
 	}
 
+	mem,ok := broker.Spec.Resources.Limits.Memory().AsInt64()
+	if ! ok {
+		mem = 4000
+	}
+	cpu,ok := broker.Spec.Resources.Limits.Cpu().AsInt64()
+	if !ok {
+		cpu = 2
+	}
+
 	dep := &appsv1.StatefulSet{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      statefulSetName,
@@ -422,10 +431,10 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 							Value: broker.Name + "-" + strconv.Itoa(brokerGroupIndex),
 						}, {
 							Name:  cons.EnvMem,
-							Value: strconv.Itoa(broker.Spec.Resources.Limits.Memory().Size()),
+							Value: strconv.FormatInt(mem,10),
 						}, {
 							Name:  cons.EnvCpu,
-							Value: strconv.Itoa(broker.Spec.Resources.Limits.Cpu().Size()),
+							Value: strconv.FormatInt(cpu,10),
 						},
 
 						},

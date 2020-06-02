@@ -1,6 +1,6 @@
 
 
-cat<<EOF | kubectl apply -n rocketmq -f -
+cat<<EOF | kubectl apply -f -
 apiVersion: rocketmq.apache.org/v1alpha1
 kind: Broker
 metadata:
@@ -25,6 +25,13 @@ spec:
   storageMode: NFS
   # hostPath is the local path to store data
   hostPath: /data/rocketmq/broker
+  resources:
+    requests:
+      cpu: 1
+      memory: 1Gi
+    limits:
+      cpu: 1
+      memory: 1Gi
   # scalePodName is broker-[broker group number]-master-0
   scalePodName: broker-0-master-0
   # volumeClaimTemplates defines the storageClass

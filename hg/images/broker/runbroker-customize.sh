@@ -83,11 +83,13 @@ calculate_heap_sizes()
       echo 'env MEM_LIMIT not exist'
     else
         system_memory_in_mb=${MEM_LIMIT}
+        echo 'mem:' ${system_memory_in_mb}
     fi
     if [[ -z "${CPU_LIMIT}" ]]; then
       echo 'env CPU_LIMIT not exist'
     else
       system_cpu_cores=${CPU_LIMIT}
+      echo 'cpu: ' ${system_cpu_cores}
     fi
 
     # some systems like the raspberry pi don't report cores, use at least 1
