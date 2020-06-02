@@ -24,9 +24,6 @@ ENV OPERATOR=/usr/local/bin/rocketmq-operator \
     USER_UID=1001 \
     USER_NAME=rocketmq-operator
 
-# install operator binary
-COPY build/_output/bin/rocketmq-operator ${OPERATOR}
-
 COPY build/bin /usr/local/bin
 RUN  /usr/local/bin/user_setup
 
@@ -49,6 +46,9 @@ RUN set -eux; \
 	apk del .build-deps ; \
     rm -rf /var/cache/apk/* ; \
     rm -rf /tmp/*
+
+# install operator binary
+COPY build/_output/bin/rocketmq-operator ${OPERATOR}
 
 RUN chown -R ${USER_UID}:0 ${ROCKETMQ_HOME}
 
