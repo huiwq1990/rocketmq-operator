@@ -3950,8 +3950,6 @@ spec:
                     - name
                     type: object
                   type: array
-              required:
-              - containers
               type: object
             replicaPerGroup:
               description: ReplicaPerGroup each broker cluster's replica number
