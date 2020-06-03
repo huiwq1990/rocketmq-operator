@@ -15,3 +15,9 @@ export NAMESRV_ADDR=10.0.32.9:9876
 
 
 ./mqadmin topiclist -n ${NAMESRV_ADDR}
+
+
+
+./mqadmin sendMessage -t test -n localhost:9876 -p abc
+
+ ./mqadmin consumeMessage -t test -n localhost:9876

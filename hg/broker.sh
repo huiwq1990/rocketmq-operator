@@ -27,11 +27,11 @@ spec:
   hostPath: /data/rocketmq/broker
   resources:
     requests:
-      cpu: 1
-      memory: 1Ki
+      cpu: 1000m
+      memory: 1Gi
     limits:
-      cpu: 1
-      memory: 1Ki
+      cpu: 1000m
+      memory: 1Gi
   # scalePodName is broker-[broker group number]-master-0
   scalePodName: broker-0-master-0
   # volumeClaimTemplates defines the storageClass
