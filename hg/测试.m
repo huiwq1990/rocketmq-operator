@@ -40,3 +40,4 @@ EOF
 
 nslookup name-service-0.rocketmq.default.svc.cluster.local
 
+name-service-0.rocketmq

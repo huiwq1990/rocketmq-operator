@@ -308,6 +308,7 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 			Namespace: nameService.Namespace,
 		},
 		Spec: appsv1.StatefulSetSpec{
+			ServiceName: nameService.Name,
 			Replicas: &nameService.Spec.Size,
 			Selector: &metav1.LabelSelector{
 				MatchLabels: ls,
