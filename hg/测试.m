@@ -21,3 +21,19 @@ export NAMESRV_ADDR=10.0.32.9:9876
 ./mqadmin sendMessage -t test -n localhost:9876 -p abc
 
  ./mqadmin consumeMessage -t test -n localhost:9876
+
+cat<<EOF | kubectl apply -f -
+ apiVersion: v1
+ kind: Service
+ metadata:
+   name: rocketmq-nameservice
+   labels:
+     app: rocketmq-nameservice
+ spec:
+   ports:
+   - port: 9876
+     name: mq
+   clusterIP: None
+   selector:
+     app: name_service
+EOF
