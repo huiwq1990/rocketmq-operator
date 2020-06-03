@@ -44,8 +44,9 @@ type NameServiceSpec struct {
 	// VolumeClaimTemplates defines the StorageClass
 	VolumeClaimTemplates []corev1.PersistentVolumeClaim `json:"volumeClaimTemplates"`
 
-	PodSpec corev1.PodSpec `json:"podSpec"`
-	Resources corev1.ResourceRequirements `json:"resources"`
+	PodSpec corev1.PodSpec `json:"podSpec,omitempty"`
+
+	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
 
 }
 

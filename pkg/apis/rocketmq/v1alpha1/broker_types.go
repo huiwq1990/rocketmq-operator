@@ -53,9 +53,9 @@ type BrokerSpec struct {
 	// The name of pod where the metadata from
 	ScalePodName string `json:"scalePodName"`
 
-	PodSpec corev1.PodSpec `json:"podSpec"`
-	Resources corev1.ResourceRequirements `json:"resources"`
+	PodSpec corev1.PodSpec `json:"podSpec,omitempty"`
 
+	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
 }
 
 // BrokerStatus defines the observed state of Broker
