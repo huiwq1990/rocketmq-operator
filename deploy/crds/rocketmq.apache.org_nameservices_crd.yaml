@@ -4178,8 +4178,6 @@ spec:
           - hostPath
           - imagePullPolicy
           - nameServiceImage
-          - podSpec
-          - resources
           - size
           - storageMode
           - volumeClaimTemplates
