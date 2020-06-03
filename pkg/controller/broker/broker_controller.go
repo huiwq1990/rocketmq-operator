@@ -375,12 +375,12 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 
 	mem,ok := broker.Spec.Resources.Limits.Memory().AsInt64()
 	mem = mem /(1024 * 1024)
-	if ! ok {
-		mem = 4000
+	if !ok || mem <= 0 {
+		mem = 2000
 	}
 	cpu,ok := broker.Spec.Resources.Limits.Cpu().AsInt64()
-	if !ok {
-		cpu = 2
+	if !ok || cpu == 0 {
+		cpu = 1
 	}
 
 	log.Info("mem:"+  strconv.FormatInt(mem,10) +", cpu: " +  strconv.FormatInt(cpu,10))

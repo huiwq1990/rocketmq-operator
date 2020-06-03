@@ -292,11 +292,11 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 	mem,ok := nameService.Spec.Resources.Limits.Memory().AsInt64()
 	mem = mem /(1024 * 1024)
 	if ! ok {
-		mem = 4000
+		mem = 2000
 	}
 	cpu,ok := nameService.Spec.Resources.Limits.Cpu().AsInt64()
-	if !ok {
-		cpu = 2
+	if !ok || cpu == 0 {
+		cpu = 1
 	}
 
 	log.Info("mem:"+  strconv.FormatInt(mem,10) +", cpu: " +  strconv.FormatInt(cpu,10))
