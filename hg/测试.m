@@ -26,9 +26,9 @@ cat<<EOF | kubectl apply -f -
  apiVersion: v1
  kind: Service
  metadata:
-   name: rocketmq-nameservice
+   name: rocketmq
    labels:
-     app: rocketmq-nameservice
+     app: rocketmq
  spec:
    ports:
    - port: 9876
@@ -37,3 +37,6 @@ cat<<EOF | kubectl apply -f -
    selector:
      app: name_service
 EOF
+
+nslookup name-service-0.rocketmq.default.svc.cluster.local
+
