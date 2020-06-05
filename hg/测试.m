@@ -22,22 +22,42 @@ export NAMESRV_ADDR=10.0.32.9:9876
 
  ./mqadmin consumeMessage -t test -n localhost:9876
 
-cat<<EOF | kubectl apply -f -
+cat<<EOF | kubectl apply -n rocketmq -f -
 apiVersion: v1
 kind: Service
 metadata:
-  name: rocketmq
+  name: name-service2
   labels:
-    app: rocketmq
+    app: name-service2
 spec:
+  type: LoadBalancer
   ports:
   - port: 9876
     name: mq
-  clusterIP: None
   selector:
     app: name_service
 EOF
 
-nslookup name-service-0.rocketmq.default.svc.cluster.local
+nslookup name-service-0.name-service.default.svc.cluster.local
 
 name-service-0.rocketmq
+
+wget https://tpaas-inuse.s3.cn-south-1.jdcloud-oss.com/rocketmqCmd
+
+export  NAMESRV_ADDR=localhost:9876
+
+./rocketmqCmd  producer-asyncMsg test 10
+
+
+rocketmq
+
+https://grafana.com/grafana/dashboards/10477
+
+https://github.com/apache/rocketmq-exporter
+
+
+https://github.com/lstn/misc-grafana-dashboards
+
+docker
+https://grafana.com/grafana/dashboards/9621
+
