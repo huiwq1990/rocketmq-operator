@@ -26,8 +26,6 @@ spec:
         {{- if .Values.podLabels }}
 {{ toYaml .Values.podLabels | indent 8 }}
         {{- end }}
-      annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 {{- if $.Values.podAnnotations }}
 {{ toYaml $.Values.podAnnotations | indent 8 }}
 {{- end }}
@@ -65,13 +63,11 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           env:
-{{- if .Values.secrets.htpasswd }}
-            - name: REGISTRY_AUTH
-              value: "htpasswd"
-            - name: REGISTRY_AUTH_HTPASSWD_REALM
-              value: "Registry Realm"
-            - name: REGISTRY_AUTH_HTPASSWD_PATH
-              value: "/auth/htpasswd"
+{{- range $name, $value := .Values.env.java }}
+{{- if not (empty $value) }}
+        - name: {{ $name | quote }}
+          value: {{ $value | quote }}
+{{- end }}
 {{- end }}
 
 
