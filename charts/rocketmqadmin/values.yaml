@@ -44,9 +44,6 @@ ingress:
 
 priorityClassName: ""
 
-nodeSelector: {}
-
-tolerations: []
 securityContext:
   enabled: true
 
@@ -55,3 +52,19 @@ namesrvAddr: "10.0.32.16:9876"
 #env:
 #  java:
 #    JAVA_OPTS: -Drocketmq.namesrv.addr=10.0.32.16:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 500Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+nodeSelector:
+  tpaas.jdcloud.com/instance-type: tpaas
+
+tolerations:
+- key: "tpaas.jdcloud.com/dedicated"
+  operator: "Exists"
+  effect: "NoSchedule"

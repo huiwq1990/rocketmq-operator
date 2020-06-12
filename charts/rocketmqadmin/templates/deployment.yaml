@@ -60,7 +60,7 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
           env:
           - name: JAVA_OPTS
-            value: -Drocketmq.namesrv.addr={{.Values.namesrvAddr}} -Dcom.rocketmq.sendMessageWithVIPChannel=false
+            value: -Drocketmq.namesrv.addr={{.Values.namesrvAddr}} -Dcom.rocketmq.sendMessageWithVIPChannel=false -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
 
 {{- if .Values.nodeSelector }}
       nodeSelector:
