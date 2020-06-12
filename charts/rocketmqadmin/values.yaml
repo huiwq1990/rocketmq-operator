@@ -50,6 +50,8 @@ tolerations: []
 securityContext:
   enabled: true
 
-env:
-  java:
-    JAVA_OPTS: -Drocketmq.namesrv.addr=10.0.32.16:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false
+namesrvAddr: "10.0.32.16:9876"
+
+#env:
+#  java:
+#    JAVA_OPTS: -Drocketmq.namesrv.addr=10.0.32.16:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false
