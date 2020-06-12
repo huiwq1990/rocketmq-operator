@@ -46,10 +46,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-          - /bin/registry
-          - serve
-          - /etc/docker/registry/config.yml
           ports:
             - containerPort: 8080
           livenessProbe:
@@ -63,13 +59,12 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           env:
-{{- range $name, $value := .Values.env.java }}
+{{- range $name, $value := .Values.env.open }}
 {{- if not (empty $value) }}
-        - name: {{ $name | quote }}
-          value: {{ $value | quote }}
+          - name: {{ $name | quote }}
+            value: {{ $value | quote }}
 {{- end }}
 {{- end }}
-
 
 {{- if .Values.nodeSelector }}
       nodeSelector:
