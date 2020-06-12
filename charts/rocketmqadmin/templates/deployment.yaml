@@ -62,12 +62,12 @@ spec:
           - name: JAVA_OPTS
             value: -Drocketmq.namesrv.addr={{.Values.namesrvAddr}} -Dcom.rocketmq.sendMessageWithVIPChannel=false
 # 暂时废弃
-{{- range $name, $value := .Values.env.java }}
-{{- if not (empty $value) }}
-          - name: {{ $name | quote }}
-            value: {{ $value | quote }}
-{{- end }}
-{{- end }}
+#{{- range $name, $value := .Values.env.java }}
+#{{- if not (empty $value) }}
+#          - name: {{ $name | quote }}
+#            value: {{ $value | quote }}
+#{{- end }}
+#{{- end }}
 
 {{- if .Values.nodeSelector }}
       nodeSelector:
