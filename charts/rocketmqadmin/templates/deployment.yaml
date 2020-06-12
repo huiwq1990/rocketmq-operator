@@ -59,7 +59,7 @@ spec:
           resources:
 {{ toYaml .Values.resources | indent 12 }}
           env:
-{{- range $name, $value := .Values.env.open }}
+{{- range $name, $value := .Values.env.java }}
 {{- if not (empty $value) }}
           - name: {{ $name | quote }}
             value: {{ $value | quote }}
