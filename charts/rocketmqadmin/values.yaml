@@ -55,11 +55,11 @@ namesrvAddr: "10.0.32.16:9876"
 
 resources:
   limits:
-    cpu: 100m
+    cpu: 200m
     memory: 500Mi
   requests:
-    cpu: 100m
-    memory: 256Mi
+    cpu: 200m
+    memory: 500Mi
 
 nodeSelector:
   tpaas.jdcloud.com/instance-type: tpaas

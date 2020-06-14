@@ -1,7 +1,5 @@
 
-
-
-
+## 编译项目
 
 ```
 mkdir -p /tmp/rocketmq-console
@@ -16,14 +14,19 @@ git pull --depth 1 origin master
 
 cd rocketmq-console/
 mvn clean package -Dmaven.test.skip=true
+```
 
+## 构建镜像
+
+```
+cd target
 cat<<EOF > Dockerfile
 FROM openjdk:8-jdk
 VOLUME /tmp
-ADD target/rocketmq-console-ng-1.0.1.jar rocketmq-console-ng.jar
-RUN sh -c 'touch /rocketmq-console-ng.jar'
+ADD rocketmq-console-ng-1.0.1.jar rocketmq-console-ng.jar
 ENV JAVA_OPTS=""
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar /rocketmq-console-ng.jar" ]
+RUN pwd
+CMD ["java", "-jar", "/rocketmq-console-ng.jar"]
 EOF
 
 docker build -t huiwq1990/rocketmq-console-ng .
