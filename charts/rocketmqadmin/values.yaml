@@ -13,7 +13,7 @@ podAnnotations: {}
 podLabels: {}
 
 image:
-  repository: styletang/rocketmq-console-ng
+  repository: huiwq1990/rocketmq-console-ng
   tag: latest
   pullPolicy: IfNotPresent
 # imagePullSecrets:
