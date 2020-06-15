@@ -15,7 +15,7 @@ podLabels: {}
 image:
   repository: huiwq1990/rocketmq-console-ng
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 # imagePullSecrets:
     # - name: docker
 service:

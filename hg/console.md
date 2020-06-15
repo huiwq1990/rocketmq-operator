@@ -20,14 +20,6 @@ mvn clean package -Dmaven.test.skip=true
 
 ```
 cd target
-cat<<EOF > Dockerfile
-FROM openjdk:8-jdk
-VOLUME /tmp
-ADD rocketmq-console-ng-1.0.1.jar rocketmq-console-ng.jar
-ENV JAVA_OPTS=""
-RUN pwd
-CMD ["java", "-jar", "/rocketmq-console-ng.jar"]
-EOF
 
 docker build -t huiwq1990/rocketmq-console-ng .
 
