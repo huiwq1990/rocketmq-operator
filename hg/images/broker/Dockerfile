@@ -88,8 +88,8 @@ RUN chmod a+x ${ROCKETMQ_HOME}/bin/brokerGenConfig.sh \
 
 WORKDIR ${ROCKETMQ_HOME}/bin
 
-RUN sed -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_broker.xml
-RUN sed -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_broker.xml
-RUN sed -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_tools.xml
+RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_broker.xml
+RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_broker.xml
+RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_tools.xml
 
 CMD ["/bin/bash", "./brokerStart.sh"]
