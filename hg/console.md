@@ -21,9 +21,9 @@ mvn clean package -Dmaven.test.skip=true
 ```
 cd target
 
-docker build -t huiwq1990/rocketmq-console-ng .
+docker build -t huiwq1990/rocketmq-console-ng:0.0.1 .
 
-docker push huiwq1990/rocketmq-console-ng
+docker push huiwq1990/rocketmq-console-ng:0.0.1
 ```
 
 
