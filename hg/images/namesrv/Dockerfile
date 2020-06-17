@@ -82,7 +82,7 @@ RUN mv ${ROCKETMQ_HOME}/bin/runserver-customize.sh ${ROCKETMQ_HOME}/bin/runserve
 WORKDIR ${ROCKETMQ_HOME}/bin
 
 RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_broker.xml
-RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_broker.xml
+RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_namesrv.xml
 RUN sed -i -e "s/\${user.home}/\/home\/rocketmq/" ${ROCKETMQ_HOME}/conf/logback_tools.xml
 
 CMD ["/bin/bash", "mqnamesrv"]
