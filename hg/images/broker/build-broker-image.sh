@@ -36,5 +36,5 @@ ROCKETMQ_VERSION=$1
 DOCKERHUB_REPO=rocketmqinc/rocketmq-broker
 
 ROCKETMQ_VERSION=4.5.0
-docker build -t huiwq1990/rocketmq-broker:${ROCKETMQ_VERSION}-alpine --build-arg version=${ROCKETMQ_VERSION}  --build-arg user=root  --build-arg group=root  --build-arg uid=0  --build-arg gid=0 .
-docker push huiwq1990/rocketmq-broker:4.5.0-alpine
+docker build -t huiwq1990/rocketmq-broker:${ROCKETMQ_VERSION}-samecluster --build-arg version=${ROCKETMQ_VERSION}  --build-arg user=root  --build-arg group=root  --build-arg uid=0  --build-arg gid=0 .
+docker push huiwq1990/rocketmq-broker:${ROCKETMQ_VERSION}-samecluster
