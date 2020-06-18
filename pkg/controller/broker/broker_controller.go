@@ -405,6 +405,7 @@ func (r *ReconcileBroker) getBrokerStatefulSet(broker *rocketmqv1alpha1.Broker, 
 				Spec: corev1.PodSpec{
 					Tolerations : broker.Spec.PodSpec.Tolerations,
 					NodeSelector: broker.Spec.PodSpec.NodeSelector,
+					Affinity: broker.Spec.PodSpec.Affinity,
 					Containers: []corev1.Container{{
 						Image: broker.Spec.BrokerImage,
 						Name:  cons.BrokerContainerName,

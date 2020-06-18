@@ -5,6 +5,7 @@ docker build -t huiwq1990/rocketmq-broker:${ROCKETMQ_VERSION}-samecluster-v2 --b
 docker push huiwq1990/rocketmq-broker:${ROCKETMQ_VERSION}-samecluster-v2
 cd ..
 
+
 cd namesrv
 
 ROCKETMQ_VERSION=4.5.0

@@ -322,6 +322,7 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 					DNSPolicy:   "ClusterFirstWithHostNet",
 					Tolerations : nameService.Spec.PodSpec.Tolerations,
 					NodeSelector: nameService.Spec.PodSpec.NodeSelector,
+					Affinity: nameService.Spec.PodSpec.Affinity,
 					Containers: []corev1.Container{{
 						Image: nameService.Spec.NameServiceImage,
 						// Name must be lower case !
