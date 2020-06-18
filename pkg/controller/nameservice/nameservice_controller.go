@@ -318,7 +318,7 @@ func (r *ReconcileNameService) statefulSetForNameService(nameService *rocketmqv1
 					Labels: ls,
 				},
 				Spec: corev1.PodSpec{
-					HostNetwork: true,
+					HostNetwork: false,
 					DNSPolicy:   "ClusterFirstWithHostNet",
 					Tolerations : nameService.Spec.PodSpec.Tolerations,
 					NodeSelector: nameService.Spec.PodSpec.NodeSelector,
