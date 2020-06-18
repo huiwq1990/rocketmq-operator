@@ -48,6 +48,7 @@ function create_config() {
     echo "storePathCommitLog=/home/rocketmq/store/commitlog" >> $BROKER_CONFIG_FILE
     echo "storePathConsumeQueue=/home/rocketmq/store/consumequeue" >> $BROKER_CONFIG_FILE
     echo "storePathIndex=/home/rocketmq/store/index" >> $BROKER_CONFIG_FILE
+    echo "autoCreateTopicEnable=false" >> $BROKER_CONFIG_FILE
 
     echo "Wrote broker configuration file to $BROKER_CONFIG_FILE"
 }
