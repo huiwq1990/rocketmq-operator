@@ -27,6 +27,13 @@ spec:
           value: "name-service-0.name-service.rocketmq.svc.cluster.local:9876"
         ports:
         - containerPort: 5557
+        resources:
+          limits:
+            cpu: 100m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 500Mi
 
 ---
 
