@@ -1,0 +1,66 @@
+# Default values for rocketmqexporter.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+
+updateStrategy:
+  # type: RollingUpdate
+  # rollingUpdate:
+  #   maxSurge: 1
+  #   maxUnavailable: 0
+
+podAnnotations: {}
+podLabels: {}
+
+image:
+  repository: huiwq1990/rocketmq-exporter
+  tag: latest
+  pullPolicy: Always
+# imagePullSecrets:
+    # - name: docker
+service:
+  name: registry
+  type: ClusterIP
+  # clusterIP:
+  port: 80
+  # nodePort:
+  annotations: {}
+  # foo.io/bar: "true"
+ingress:
+  enabled: true
+  path: /
+  # Used to create an Ingress record.
+  hosts:
+    - demo.rocketmqexporter.local
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  labels: {}
+  tls:
+    # Secrets must be manually created in the namespace.
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
+
+priorityClassName: ""
+
+securityContext:
+  enabled: true
+
+namesrvAddr: "10.0.32.16:9876"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 500Mi
+  requests:
+    cpu: 200m
+    memory: 500Mi
+
+nodeSelector:
+  tpaas.jdcloud.com/instance-type: tpaas
+
+tolerations:
+- key: "tpaas.jdcloud.com/dedicated"
+  operator: "Exists"
+  effect: "NoSchedule"
